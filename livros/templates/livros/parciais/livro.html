@@ -1,34 +1,45 @@
-
-<div class="livro livro-lista-item">
+<div class="livro teste livro-lista-item">
     <div class="livro-capa">
-         <a href=" {% url 'livros:livro' livro.id %} ">
-            <img src="{{livro.cover.url}}" alt="Temporário">
-         </a>
+        <a href="{% url 'livros:livro' livro.id %}">
+            <img src="{{livro.capa.url}}" alt="Temporário">
+        </a>
     </div>
     <div class="livro-titulo-container">
-        <a href=" {% url 'livros:livro' livro.id %} ">
-            <h2 class="livro-titulo">{{livro.title}}</h2>
+        <a href="{% url 'livros:livro' livro.id %}">
+            <h2 class="livro-titulo">{{livro.titulo}}</h2>
         </a>
     </div>
 
-    <div class="livro-author ">
-        <span class="livro-author-item nome">
-            <i class="fas fa-user"></i>
-            {{livro.author.first_name}} {{livro.author.last_name}}
-        </span>
+    <div class="livro-author">
+        {% if livro.author.username is not None %}
+            <span class="livro-author-item nome">
+                <i class="fas fa-user"></i>
+                {{livro.author.username}}
+            </span>
+        {% else %}
+            <span class="livro-author-item nome">
+                <i class="fas fa-user"></i>
+                Desconhecido
+            </span>
+        {% endif %}
+        
+
         <span class="livro-author-item">
             <i class="fas fa-calendar-alt"></i>
-            {{ livro.created_at|date:"d/m/Y" }} às {{ livro.created_at|date:"H:i" }}
+            {{ livro.criado_em|date:"d/m/Y" }} às {{ livro.criado_em|date:"H:i" }}
         </span>
-        <span class="livro-author-item">
-            <a href="/recipes/category/cafe-da-manha/">
-                <i class="fas fa-layer-group"></i>
-                <span>{{livro.category.name}}</span>
-            </a>
-        </span>
+        {% if livro.category is not None %}
+            <span class="livro-author-item">
+                <a href="{% url 'livros:category' livro.category.id %}">
+                    <i class="fas fa-layer-group"></i>
+                    <span>{{livro.category.name}}</span>
+                </a>
+            </span>
+        {% endif %}
+
     </div>
     <div class="livro-content">
-        <p>{{ livro.description }}</p>
+        <p>{{ livro.descricao1 }}</p>
     </div>
     {% if detalhe_da_pagina is not True %}
         <footer class="livro-footer">
@@ -40,9 +51,7 @@
     {% endif %}
     {% if detalhe_da_pagina is True %}
         <div class="mais-detalhe-do-livro">
-            {{livro.description_maior|linebreaksbr }}
+            {{livro.descricao2|linebreaksbr}}
         </div>
     {% endif %}
-
-
 </div>

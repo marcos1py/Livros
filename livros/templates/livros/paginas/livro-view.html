@@ -1,5 +1,5 @@
 {% extends 'global/base.html' %}
-{% block titulo %}ALTERAR | {% endblock titulo %}
+{% block titulo %}{{ livro.titulo }} | {% endblock titulo %}
 {% block conteudo %}
 <div class="main-conteudo main-conteudo-detalhes container">
     {% include "livros/parciais/livro.html" %}
