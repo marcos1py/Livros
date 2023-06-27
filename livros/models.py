@@ -14,7 +14,10 @@ class Livro(models.Model):
     slug = models.SlugField()
     data_publicacao = models.DateField()
     total_de_paginas = models.CharField(max_length=13)
-    capa = models.ImageField(upload_to='livros/capas/%Y/%m/%d/')
+
+    capa = models.ImageField(
+        upload_to='livros/capas/%Y/%m/%d/', blank=True, default='')
+    
     criado_em = models.DateTimeField(auto_now_add=True)
     atualizado_em = models.DateTimeField(auto_now=True)
     publicado = models.BooleanField(default=False)

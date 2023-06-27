@@ -1,9 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.http import Http404
-from ultils.livros.fabrica_de_livros import make_livro
 from livros.models import Livro
-from django.shortcuts import get_list_or_404, get_object_or_404, render
+from django.shortcuts import get_object_or_404, render
 
 def home(request):
     livros = Livro.objects.filter(
@@ -22,7 +19,7 @@ def category(request, category_id):
     ).order_by('-id')
     return render(request, 'livros/paginas/categoria.html', context={
         'livros': livros,
-        'titulo': f'{livros.first().category.name} - Category | '
+        'titulo': f'{livros[0].category.name} - Category | '
     })
 
 
