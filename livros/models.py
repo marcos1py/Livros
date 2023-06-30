@@ -11,7 +11,7 @@ class Livro(models.Model):
     titulo = models.CharField(max_length=100)
     descricao1 = models.CharField(max_length=200)
     descricao2 = models.TextField()
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
     data_publicacao = models.DateField()
     total_de_paginas = models.CharField(max_length=13)
 
