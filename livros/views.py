@@ -4,8 +4,11 @@ from django.shortcuts import get_object_or_404, render
 from django.http.response import Http404
 from django.db.models import Q
 from ultils.livros.paginaçao import paginaçao_das_page
+import os
 
-QT_LIVROS_NA_PAG = 3
+
+
+QT_LIVROS_NA_PAG = int(os.environ.get("QT_LIVROS_NA_PAG", 2))
 
 
 def home(request):
@@ -14,6 +17,7 @@ def home(request):
     ).order_by('-id')
 
 
+    
     pagina_obj, pagination_range = paginaçao_das_page(request,livros, QT_LIVROS_NA_PAG)
 
     return render(request, "livros/paginas/home.html", context={
@@ -47,7 +51,7 @@ def livro(request, id):
         'detalhe_da_pagina': True,
     })
 def search(request):
-
+    
     search_term = request.GET.get('q', '').strip()
 
 

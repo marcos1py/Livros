@@ -1,10 +1,13 @@
 {% extends 'global/base.html' %}
 {% block titulo %} Home | {% endblock titulo %}
 {% block conteudo %}
+
+{% include 'livros/parciais/messages.html' %}
+
+
 <div class="main-conteudo main-conteudo-lista container">
     {% for livro in livros %}
         {% include "livros/parciais/livro.html" %}
-
     {% empty %}
         <div class="center m-y ">
             <h1>Nenhum livro encontrado aqui 🥲</h1>
