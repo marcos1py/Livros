@@ -5,6 +5,9 @@
     <div class="main-conteudo  center container">
         <h1>Registrar  </h1>
     </div>
+
+    {% include 'livros/parciais/messages.html' %}
+
     <div class="main-conteudo   container">
         <form action="{% url 'authors:create' %}" method="POST">
             {% csrf_token %}
