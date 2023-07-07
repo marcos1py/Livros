@@ -1,0 +1,8 @@
+    <div class="pesquisa-container">
+        <div class="container">
+            <form action="{% url 'livros:search' %}" method="GET" class="pesquisa-form">
+                <input type="search" class="pesquisa-input" name="q" value="{{ search_term }}" required>
+                <button type="submit" class="pesquisa-button"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </div>

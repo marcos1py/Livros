@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from ultils.livros.paginaçao import   criar_paginacao
+from utils.livros.paginaçao import   criar_paginacao
 
 class TestePaginacao(TestCase):
     def test_make_pagination_range_retorna_um_intervalo_de_paginacao(self):

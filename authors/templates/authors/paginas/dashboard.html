@@ -1,0 +1,24 @@
+{% extends 'global/base.html' %}
+{% block titulo %}Dashboad {{ user  }}| {% endblock titulo %}
+
+{% block conteudo %}
+<div class="main-conteudo  center container">
+  <h1>Dashboad {{ user  }} </h1>
+  {% include 'authors/parciais/login_message.html' %}
+    <div class="authors-dashboard-container">
+    <h3>Your livros</h3>
+    <ul>
+      {% for livro in livros %}
+        <li>
+          <a href="#">{{ livro.titulo }}</a>
+        </li>
+      {% empty %}
+        <li>
+          <p>You do not have livros, please create one.</p>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% include 'global/parciais/messages.html' %}
+{% endblock conteudo %}

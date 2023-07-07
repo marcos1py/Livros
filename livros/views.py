@@ -3,7 +3,7 @@ from livros.models import Livro
 from django.shortcuts import get_object_or_404, render
 from django.http.response import Http404
 from django.db.models import Q
-from ultils.livros.paginaçao import paginaçao_das_page
+from utils.livros.paginaçao import paginaçao_das_page
 import os
 
 

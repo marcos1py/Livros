@@ -3,19 +3,19 @@
 <html lang="pt-BR">
 
 <head>
-    {% include "livros/parciais/head.html" %}
+    {% include "global/parciais/head.html" %}
     <title> {% block titulo %}{% endblock titulo %} Livros</title>
 </head>
 <body>
-    {% include "livros/parciais/header.html" %}
-    {% include "livros/parciais/pesquisa.html" %}
+    {% include "global/parciais/header.html" %}
+    {% include "global/parciais/pesquisa.html" %}
     
     <main class="main-conteudo-container">
         {% block conteudo %}{% endblock conteudo %}
 
-        {% include "livros/parciais/paginaçao.html" %}
+        {% include "global/parciais/paginaçao.html" %}
     </main>
-    {% include "livros/parciais/roda_pe.html" %}
+    {% include "global/parciais/roda_pe.html" %}
 </body>
 
 </html>
