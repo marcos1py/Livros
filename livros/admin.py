@@ -9,8 +9,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Livro)
 class LivroAdmin(admin.ModelAdmin):
-    list_display = ['id', 'titulo', 'data_publicacao', 'publicado', 'author']
-    list_display_links = 'titulo', 'data_publicacao',
+    list_display = ['id', 'titulo',  'publicado', 'author']
+    list_display_links = 'titulo', 
     search_fields = 'id', 'titulo', 'description', 'slug', 'preparation_steps',
     list_filter = 'category', 'author', 'publicado',
     list_per_page = 10

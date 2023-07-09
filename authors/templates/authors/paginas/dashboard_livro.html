@@ -1,0 +1,17 @@
+{% extends 'global/base.html' %}
+
+{% block titulo %}Dashboard livro | {% endblock titulo %}
+
+{% block conteudo %}
+<div class="main-conteudo  center container">
+    <h2>Dashboard livro</h2>
+    {% include 'global/parciais/messages.html' %}
+    {% include 'authors/parciais/login_message.html' %}
+
+    <div class="left">
+      {% include 'global/parciais/form.html' %}
+    </div>
+  </div>
+
+
+  {% endblock conteudo %}

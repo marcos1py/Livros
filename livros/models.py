@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
+from django.utils.text import slugify
+
 
 class Category(models.Model):
     name = models.CharField(max_length=65)
@@ -12,7 +15,7 @@ class Livro(models.Model):
     descricao1 = models.CharField(max_length=200)
     descricao2 = models.TextField()
     slug = models.SlugField(unique=True)
-    data_publicacao = models.DateField()
+    data_publicacao = models.DateField(null=True)
     total_de_paginas = models.CharField(max_length=13)
 
     capa = models.ImageField(
@@ -31,3 +34,13 @@ class Livro(models.Model):
 
     def __str__(self):
         return self.titulo
+
+    def get_absolute_url(self):
+        return reverse('livros:livro', args=(self.id,))
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            slug = f'{slugify(self.titulo)}'
+            self.slug = slug
+
+        return super().save(*args, **kwargs)

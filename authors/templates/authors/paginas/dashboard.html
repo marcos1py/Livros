@@ -5,12 +5,22 @@
 <div class="main-conteudo  center container">
   <h1>Dashboad {{ user  }} </h1>
   {% include 'authors/parciais/login_message.html' %}
+  {% include 'global/parciais/messages.html' %}
     <div class="authors-dashboard-container">
     <h3>Your livros</h3>
     <ul>
       {% for livro in livros %}
         <li>
-          <a href="#">{{ livro.titulo }}</a>
+
+          <a href="{% url 'authors:dashboard_livro_edit' livro.id  %}">{{ livro.titulo }}</a> - 
+          <form 
+          class="inline-form form-delete" 
+          action="{% url 'authors:dashboard_livro_delete'  %}" 
+          method='POST'>
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{ livro.id }}">
+            <button class="plaintext-button" type="submit">❌</button>
+          </form>
         </li>
       {% empty %}
         <li>
@@ -20,5 +30,5 @@
     </ul>
   </div>
 </div>
-{% include 'global/parciais/messages.html' %}
+
 {% endblock conteudo %}

@@ -1,11 +1,11 @@
 <div class="livro teste livro-lista-item">
     <div class="livro-capa">
-        <a href="{% url 'livros:livro' livro.id %}">
+        <a href="{{ livro.get_absolute_url }}">
             <img src="{{livro.capa.url}}" alt="Temporário">
         </a>
     </div>
     <div class="livro-titulo-container">
-        <a href="{% url 'livros:livro' livro.id %}">
+        <a href="{{ livro.get_absolute_url }}">
             <h2 class="livro-titulo">{{livro.titulo}}</h2>
         </a>
     </div>

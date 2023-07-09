@@ -1,11 +1,12 @@
 from django.shortcuts import render,redirect
 from django.http import Http404
 from django.contrib import messages
-from .forms import LoginForm, RegistrarForm
+from authors.forms import LoginForm, RegistrarForm
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from livros.models import Livro
+from authors.forms.livro_form import AuthorlivroForm
 
 def registrar_view(request):
     register_form_data = request.session.get('register_form_data', None)
@@ -81,10 +82,13 @@ def logout_view(request):
 @login_required(login_url='authors:login', redirect_field_name='next')
 def dashboard(request):
     livros = Livro.objects.filter(
-        publicado = False,
+        publicado=False,
         author=request.user
     )
     
     return render(request, 'authors/paginas/dashboard.html', context={
-        "livros":livros,
+        "livros": livros,
     })
+    
+
+    

@@ -1,4 +1,6 @@
 
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -7,6 +9,8 @@
     <title> {% block titulo %}{% endblock titulo %} Livros</title>
 </head>
 <body>
+    {% include 'global/parciais/menu.html' %}
+
     {% include "global/parciais/header.html" %}
     {% include "global/parciais/pesquisa.html" %}
     
@@ -16,6 +20,8 @@
         {% include "global/parciais/paginaçao.html" %}
     </main>
     {% include "global/parciais/roda_pe.html" %}
+    <script src="{% static 'global/js/scripts.js' %}"></script>
+
 </body>
 
 </html>

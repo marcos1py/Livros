@@ -5,9 +5,30 @@ from livros import views
 app_name = "livros"
 
 urlpatterns = [
-    path('', views.home, name="home"), 
-    path('livro/search/', views.search, name="search"),
-    path('livro/category/<int:category_id>/', views.category, name="category"),
-    path('livro/<int:id>/', views.livro, name="livro"),
+    path('', views.LivroListViewBase.as_view(), name="home"),
+    path(
+        'livros/search/',
+        views.LivroListViewSearch.as_view(), name="search"
+    ),
+    path(
+        'livros/category/<int:category_id>/',
+        views.LivroListViewCategory.as_view(), name="category"
+    ),
     
+    path(
+        'livros/<int:pk>/',
+        views.LivroDetail.as_view(),
+        name="livro"
+    ),
+    
+    path(
+        'livros/api/v1/',
+        views.LivroListViewHomeApi.as_view(),
+        name="livros_api_v1",
+    ),
+    path(
+        'livros/api/v1/<int:pk>/',
+        views.LivroDetailAPI.as_view(),
+        name="livros_api_v1_detail",
+    ),
 ]
