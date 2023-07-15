@@ -70,7 +70,7 @@ class Dashboardlivro(View):
 
             livro.save()
 
-            messages.success(request, 'Sua receita foi salva com sucesso!')
+            messages.success(request, 'Sua  foi salva com sucesso!')
             return redirect(
                 reverse(
                     'authors:dashboard_livro_edit', args=(

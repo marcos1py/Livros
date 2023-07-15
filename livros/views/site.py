@@ -24,6 +24,7 @@ class LivroListViewBase(ListView):
         qs = qs.filter(
             publicado=True,
         )
+        qs = qs.select_related('author', 'category', 'author__profile')
         return qs
 
     def get_context_data(self, *args, **kwargs):

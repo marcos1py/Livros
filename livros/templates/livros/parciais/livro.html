@@ -13,8 +13,15 @@
     <div class="livro-author">
         {% if livro.author.username is not None %}
             <span class="livro-author-item nome">
+                {% if livro.author.profile %}
+                    <a href="{% url 'authors:profile' livro.author.profile.id %}">
+                {% endif %}
+
                 <i class="fas fa-user"></i>
                 {{livro.author.username}}
+                {% if livro.author.profile %}
+                    </a>
+                {% endif %}
             </span>
         {% else %}
             <span class="livro-author-item nome">
@@ -36,6 +43,7 @@
                 </a>
             </span>
         {% endif %}
+
 
     </div>
     <div class="livro-content">

@@ -31,4 +31,9 @@ urlpatterns = [
         views.LivroDetailAPI.as_view(),
         name="livros_api_v1_detail",
     ),
+    path(
+        'livros/api/v2/',
+        views.livro_api_list,
+        name='livros_api_v2'
+    ),
 ]

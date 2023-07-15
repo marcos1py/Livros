@@ -3,20 +3,20 @@ from django.urls import resolve, reverse
 from livros.models import Category, Livro, User
 from datetime import datetime
 
-from livros import views
+from livros.views import site
 
 class LivroViewsTest(TestCase):
     def test_livro_home_view_function_is_correct(self):
         view = resolve(reverse('livros:home'))
-        self.assertIs(view.func, views.home)
+        self.assertIs(view.func, site.home)
 
     def test_livro_category_view_function_is_correct(self):
         view = resolve(reverse('livros:category', kwargs={'category_id': 1}))
-        self.assertIs(view.func, views.category)
+        self.assertIs(view.func, site.category)
 
     def test_livro_detail_view_function_is_correct(self):
         view = resolve(reverse('livros:livro', kwargs={'id': 1}))
-        self.assertIs(view.func, views.livro)
+        self.assertIs(view.func, site.livro)
 
     def test_livro_home_view_returns_status_code_200_OK(self):
         response = self.client.get(reverse('livros:home'))
@@ -38,7 +38,7 @@ class LivroViewsTest(TestCase):
         view = resolve(
             reverse('livros:category', kwargs={'category_id': 1000})
         )
-        self.assertIs(view.func, views.category)
+        self.assertIs(view.func, site.category)
 
 
 
@@ -46,7 +46,7 @@ class LivroViewsTest(TestCase):
         view = resolve(
             reverse('livros:livro', kwargs={'id': 1})
         )
-        self.assertIs(view.func, views.livro)
+        self.assertIs(view.func, site.livro)
 
     def test_livro_detail_view_returns_404_if_no_livros_found(self):
         response = self.client.get(
@@ -58,5 +58,5 @@ class LivroViewsTest(TestCase):
 
     def test_livro_search_uses_correct_view_function(self):
         resolved = resolve(reverse('livros:search'))
-        self.assertIs(resolved.func, views.search)
+        self.assertIs(resolved.func, site.search)
 
